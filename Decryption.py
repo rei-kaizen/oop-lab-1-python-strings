@@ -49,6 +49,7 @@ def gif_update(frame):
     gif_frame = gif_frames[frame]
     label.config(image=gif_frame)
     root.after(50, gif_update, (frame + 1) % gif.n_frames)
+    
 #loop for the frames of the gif by the PhotoImage instances
 for i in range(gif.n_frames):
     gif.seek(i)
