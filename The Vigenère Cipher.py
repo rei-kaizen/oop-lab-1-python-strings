@@ -2,20 +2,21 @@
 import tkinter as tk
 
 #the user ought to input a message and key, then the program will encrypt the message using the key
-#to be more, engaging, this program will use tkinter module to create GUI in order for user to enter the message and key in new window
+#to be more engaging, this program will use tkinter module to create GUI in order for user to enter the message and key in new window
 #then user will click a button to encrypt the message
 #finally, the encrypted message will be displayed
 
 #define a function that takes the message and key
 def encrypt(message, key):
-#remove the spaces, if any, from the message and convert to uppercase    
+    #remove the spaces, if any, from the message and convert to uppercase    
     message = message.replace(" ", "").upper()
-#also, the key is set to be uppercase
+    #also, the key is set to be uppercase
     key = key.upper()
 
-#initialize the ciphertxt as empty string
+    #initialize the ciphertxt as empty string
     ciphertxt = ""
-#iterate over each character in the message
+    
+    #iterate over each character in the message
     for i in range(len(message)):
         #get the corresponding letter values(0-25) and subtract 65 to get value bet. 0 & 25
         mssg_value = ord(message[i]) - 65
@@ -30,19 +31,20 @@ def encrypt(message, key):
     return ciphertxt
 
 
-#--for GUI --
-#define function to be called when the button is clicked
+#--for GUI--
+#define a function to be called when the button is clicked
 def trigger_action():
     #get the message and key from respective entry fields
     message = mssg_entry.get()
     key = key_entry.get()
-    #store the result of the first function in ciphertext
+    #store the result of the encrypt function in ciphertext
     ciphertxt = encrypt(message, key)
     #then a encrypted message must be displayed in the ciphertext field
+    #hence, ciphertxt entry field is cleared to insert the result
     ciphertxt_entry.delete(0, tk.END)
     ciphertxt_entry.insert(0, ciphertxt)
 
-#now, create the window with its title
+#establish a window with its title
 win = tk.Tk()
 win.title("The Vigenère Cipher")
 
